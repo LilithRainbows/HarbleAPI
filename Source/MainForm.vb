@@ -41,6 +41,9 @@ Public Class MainForm
             Else
                 NewMessage.Add(New JProperty("Name", ExtensionChild.In.GetName(Message.Value.Hash)))
             End If
+            If String.IsNullOrWhiteSpace(NewMessage("Name").ToString) Then
+                Continue For 'Skip empty messages
+            End If
             NewMessage.Add(New JProperty("Id", Message.Value.Id))
             NewMessage.Add(New JProperty("Hash", Message.Value.Hash))
             NewMessage.Add(New JProperty("IsOutgoing", Message.Value.IsOutgoing))
